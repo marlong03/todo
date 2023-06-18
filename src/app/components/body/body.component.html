@@ -1,0 +1,28 @@
+
+<app-header></app-header>
+<section class="container__banner" id="containerBanner" [style.background]="backgroundColorFondo">
+    <div class="container__text" *ngIf="newItem == false">
+
+        <h3>¡Hola</h3>
+        <h1>{{userConnected.nombre}}!</h1>
+        
+        <p *ngIf="todosLength > 0">Todavia tenemos tareas pendientes ({{todosLength}})</p>
+        <p *ngIf="todosLength == 0">No hay tareas pendientes 😎 </p>
+
+    </div>
+    <section class="section__todo">
+        <app-todo (newItemEvent)="changeNewItem($event)"></app-todo>
+    </section>
+    <div class="burbujas" id="burbujasId" [style.display]="estadoBurbujas" >
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+        <div class="burbuja"></div>
+    </div>
+</section>

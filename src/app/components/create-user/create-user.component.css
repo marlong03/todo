@@ -1,0 +1,122 @@
+.container__createUser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: linear-gradient(#010020f6,95%, #0a0a0a);
+}
+.container__userDates{
+    box-shadow: 0px 0px 10px black;
+    background-color: #d4d4d4;
+    padding:30px;
+    
+    border-radius: 10px;
+    font-family: 'Signika Negative', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container__userDates h2{
+    color:#2a2a2a;
+    font-size: 35px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.container__userDates div:nth-child(2){
+    margin-top: 15px;
+}
+.container__userDates input[type=text]{
+    font-size: 18px;
+    padding:10px 20px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    text-transform: capitalize;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 3px solid #2a2a2a;
+}
+.container__userDates input[type=button]{
+    font-size: 18px;
+    padding:10px 20px;
+    margin:0 10px;
+    cursor: pointer;
+    color:white;
+    background-color: #2a2a2a;
+    border-bottom: 3px solid #2a2a2a;
+    border: 2px solid #2a2a2a;
+    border-radius: 5px;
+}
+.container__userDates input[type=button]:hover{
+  
+    color:white;
+    background-color: #3f3f3f;
+    border: 2px solid black;
+    
+}
+.title__todo{
+    position:absolute;
+    top:0;
+    left:0;
+    margin:30px;
+}
+img{
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    object-fit: cover;
+    filter: blur(10px);
+    height: 100vh;
+    width: 100%;
+}
+@media (max-width:600px){
+    .container__userDates{
+        
+      
+        background-color: #d4d4d4;
+        padding:10px;
+        height: 100%;
+        width: 100vw;
+        text-align: center;
+        
+    }
+    .container__userDates h2{
+        color:#2a2a2a;
+        font-size: 25px;
+    }
+    .container__userDates input[type=button]{
+        font-size: 18px;
+        padding:10px 20px;
+        margin:20px;
+        cursor: pointer;
+        color:white;
+        background-color: #2a2a2a;
+        border-bottom: 3px solid #2a2a2a;
+        border: 2px solid #2a2a2a;
+        border-radius: 5px;
+    }
+    .container__userDates input[type=text]{
+        font-size: 18px;
+        padding:10px 20px;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        margin-top: 20px;
+        text-transform: capitalize;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom: 3px solid #2a2a2a;
+    }
+    .container__userDates h2{
+        margin-bottom: 0px;
+    }
+}

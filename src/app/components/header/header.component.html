@@ -1,0 +1,36 @@
+<header>
+    <div class="title">[TO-DO]</div>
+    <div (click)="accionarSidebar()"><img src="assets/imgs/icons/menu.svg" title="Opciones" alt="Opciones"></div>
+</header>
+<section class="sidebar "id="sidebar">
+    <span class="cerrar" (click)="accionarSidebar()"><img src="assets/imgs/icons/cerrar.svg" title="Cerrar" alt="Cerrar Opciones"></span>
+    <ul>
+        <li (click)="accionarInputCambiarNombre()">Cambiar nombre</li>
+        <li class="container__cambiarNombre" [style.display]="estadoInputCambiarNombre">
+            <div>
+                <input type="text" [(ngModel)]="nombreValue" name="nombreValue" placeholder="Nuevo nombre"  title="Nuevo nombre">
+            </div>
+            <div (click)="cambiarNombre()">
+                <img src="assets/imgs/icons/disquete.svg"  title="Guardar" alt="Guardar nuevo nombre">
+            </div>
+        </li>
+        <li class="item__check">
+            <div>burbujas</div>
+            <div>
+                <label class="content-input" title="Animacion burbujas">
+                    <input type="checkbox" name="Vehiculo" id="autopista"  [checked]="inputChecked" (click)="cambiarEstadoBurbujas()">
+                    <i></i>
+                </label>
+            </div>
+        </li>
+        <li class="item__check"> 
+            <div>Color fondo</div>
+            <div>
+                <div>
+                    <input type="color" name="inputColor" id="inputColor" (change)="cambiarColorFondo($event)" value="{{colorFondo}}" title="Color fondo">
+                </div>
+            </div>
+        </li>
+        <li (click)="borrarDatos()">Borrar datos</li>
+    </ul>
+</section>

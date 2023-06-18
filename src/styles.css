@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Signika+Negative:wght@500&display=swap');
+@import "~@ng-select/ng-select/themes/material.theme.css";
+@import '~@ctrl/ngx-emoji-mart/picker';
+/* 
+font-family: 'Roboto', sans-serif;
+font-family: 'Signika Negative', sans-serif;
+*/
+*{
+    margin:0;
+    padding:0;
+}
+
+
+/* --------------------- btn checkbox -------------------*/
+.content-input input{
+	visibility: hidden;
+	position: absolute;
+	right: 0;
+}
+.content-input{
+	position: relative;
+	margin-bottom: 10px;
+	padding:5px 0 5px 60px; 
+	display: block;
+}
+.content-input input + i{
+       background: #cfcfcf;
+       position: absolute; 
+       border:#414141 solid 3px;
+       left: 0;
+       top: 0;
+       cursor: pointer;
+}
+.content-input input[type=checkbox ] + i{
+	width: 50px;
+	height: 25px;
+	border-radius: 30px;
+}
+.content-input input[type=checkbox] + i:before{
+	content: ''; 
+	width: 22px;
+	height: 22px;
+	background: #e6e6e6;
+	border-radius: 100px;
+	position: absolute;
+    margin-top: 1px;
+	z-index: 1;
+	box-shadow: 3px 3px 5px #13121261;
+    animation: trasladarDer .5s;
+}
+.content-input input[type=checkbox]:checked + i:before{
+    animation: trasladarIzq .2s;
+	left: 24px;
+}
+.content-input input[type=checkbox]:checked + i{
+ background: #222222;
+}
+@keyframes trasladarIzq {
+    0%{ left:0%}
+    100%{ left:24px}
+}
+@keyframes trasladarDer {
+    0%{ left:24px}
+    100%{ left:0%}
+}
+/* --------------------- btn checkbox -------------------*/

@@ -1,0 +1,153 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 40px;
+    /* background-color: #d7d7d7; */
+    background-color: #0e0e0e;
+    color:white;
+    position: relative;
+    z-index: 200;
+    font-size: 20px;
+    font-family: 'Signika Negative', sans-serif;
+}
+header div{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+header div img{
+    width: 35px;
+    background-color: #aaaaaa;
+    padding:10px;
+    border-radius: 10px;
+}
+.title{
+    font-size: 30px;
+    font-weight: 900;
+}
+.sidebar{
+   /*  background-color: #e6e6e6f6; */
+    background-color: #0e0e0e;
+   /*  color:black; */
+    color:white;
+    padding:0px 20px;
+    width: 27%;
+    height: 100%;
+    position:fixed;
+    z-index: 200;
+    top:0;
+    left:-70% ;
+   /*  box-shadow: 0px 0px 20px #414141; */
+    box-shadow: 0px 0px 20px #000000;
+}
+/* -------------------------------------------------- */
+.ocultarSide{
+    animation: ocultarSidebar .8s linear;
+    left: -70%;
+}
+.mostrarSide{
+    animation: mostrarSidebar .5s ease-out;
+    left: 0%;
+}
+@keyframes ocultarSidebar {
+    0%{ left:0%}
+    100%{ left:-70%}
+}
+@keyframes mostrarSidebar {
+    0%{ left:-70%}
+    100%{ left:0%}
+}
+/* -------------------------------------------------- */
+.sidebar ul{
+    list-style: none;
+    padding: 10px 0;
+    margin-top: 70px;
+    font-size: 20px;
+}
+.sidebar li{
+    padding: 10px 0;
+    margin:5px 0;
+    cursor:pointer;
+    font-family: 'Signika Negative', sans-serif;
+}
+.sidebar .cerrar{
+    position: absolute;
+    right: 0;
+    margin:20px;
+    cursor: pointer;
+    padding:10px;
+    color:white;
+    background-color: #aaaaaa;
+    border-radius: 10px;
+    font-family: 'Signika Negative', sans-serif;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.sidebar .cerrar img{
+    width: 30px;
+}
+.container__cambiarNombre{
+    display: flex ;
+    justify-content: space-between;
+    align-items: center;
+}
+.container__cambiarNombre input{
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    border: 2px solid #bebebe;
+    width: 70%;
+    font-size: 18px;
+    font-family: 'Signika Negative', sans-serif;
+}
+.container__cambiarNombre div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container__cambiarNombre img{
+    width: 30px;   
+    margin-right: 20px; 
+    background-color: #aaaaaa;
+    padding:5px;
+    border-radius: 10px;
+}
+.item__check{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+input[type=color]{
+    height: 42px;
+    appearance: none;
+    width: 42px;
+    border-radius: 100px;
+    border: none;
+    border-radius: 100px;
+}
+input[type=color]::-webkit-color-swatch{
+    border-radius: 100%;
+    border:3px solid #414141;
+    cursor: pointer;
+}
+/* Media Screen */
+@media (max-width:750px){
+    .sidebar{
+        width:50%;
+    }
+    header{
+        padding:20px;
+    }
+}
+@media (max-width:550px){
+    .sidebar{
+        width:55%;
+    }
+    .container__cambiarNombre img{
+        margin-right: 0px; 
+    }
+}
+/* Media Screen */

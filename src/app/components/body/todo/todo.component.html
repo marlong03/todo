@@ -1,0 +1,106 @@
+<section class="container__todo" >
+    <div class="todos__acciones">
+        <input type="search" name="palabraBuscar" title="Barra de busqueda" class="input__buscarFuera"  [(ngModel)]="palabraBuscar" id="inputSearchTop" placeholder="Buscar..." (keydown)="buscarTodosPorPalabras()"  *ngIf="estadoCrearTodo == false  ">
+        <ul class="listaAccionesIndex" id="optionsIndexTodos" >
+        <div class="filters__left">
+
+            <li class="container__paginacion" title="Paginacion" *ngIf="paginacionMaximaGlobal > 1 && listaTodosFiltro.length == 0"><p *ngFor="let numero of listaPaginacionMaxima" (click)="escogerPagina($event)">{{numero}}</p></li>
+            <input type="button" value="Quitar filtro"  (click)="quitarFiltros()" *ngIf="listaTodosFiltro.length > 0"><!--  -->
+        </div>
+         
+            <div>
+
+            <li (click)="mostrarFiltros()"><img src="assets/imgs/icons/filtrar.svg" alt="Filtrar notas" title="Filtros"></li>
+                <div class="container__filtros" *ngIf="mostrarSeccionFiltros == true" (click)="obtenerPalabrasFiltro($event)">
+                    <div *ngIf="listaFiltros.length == 0">
+                        <input type="button" value="alfabeto" (click)="filtrarPor('alfabeto')" >
+                        <input type="button" value="estado" (click)="filtrarPor('estado')" >
+                        <input type="button" value="fecha" (click)="filtrarPor('fecha')">
+                    </div>
+                    <input type="button" value="Volver" *ngIf="listaFiltros.length > 0" (click)="listaFiltros = []" class="bgcGray">
+                    <div *ngFor="let filtro of listaFiltros" >
+                        <input type="button" value="{{filtro}}" >
+                    </div>
+                </div>
+          
+            <li id="btnAbrirSectionCrearTodo" title="Crear nota" (click)="accionarSectionCrearTodo()"> <img src="assets/imgs/icons/boton-agregar.svg" alt="Crear nota"></li>
+        </div>
+        </ul>
+        <ul class="listaAccionesCrear" id="optionsCrearTodo">
+            <li (click)="accionarSectionCrearTodo()"><img src="assets/imgs/icons/cerrar.svg" title="Volver" alt="Volver"></li>
+            <li id="btnGuardarTodo"(click)="crearTodo()" *ngIf="todoContentText != ''"><img src="assets/imgs/icons/disquete.svg" title="Guardar"alt="Guardar nota"></li>
+        </ul>
+        <ul class="listaAccionesCrear listaAccionarModificar" id="optionsModificarTodo">
+            <li (click)="accionarSectionModificarTodo(0)"><img src="assets/imgs/icons/cerrar.svg" title="Volver" alt="Volver"></li>
+            <li id="btnGuardarTodo" (click)="actualizarTextTodo()" *ngIf="textContentModificarTodo != textoTodoNoModificado"><img src="assets/imgs/icons/disquete.svg" title="Guardar" alt="Guardar nota" ></li>
+        </ul>
+    </div>
+    <div class="todo__crear" id="sectionCrearTodo">
+        <div class="container__textarea--crear">
+            <textarea name="todoContentText"  [(ngModel)]="todoContentText" class="todo__content--create" placeholder="¿Que nota crearemos hoy {{userConnected.nombre}}? ">
+            </textarea>
+        </div>
+        <p class="textHayNotas">¿Cuando caducará el todo?</p>
+        <div class="container__vencimiento">
+            <div class="container__vencimiento--opciones">
+                <div>
+                    <input type="datetime-local" name="datetimelocal" id="datetimelocal" title="Fecha" [(ngModel)]="dateTimeLocal" class="datetimeClass" (change)="obtenerFecha()">
+                </div>
+                <div class="container__novence" id="containerNoVence">
+                    <div>
+                        No caduca 
+                    </div>
+                    <div>
+                        <label class="content-input">
+                            <input type="checkbox"  [disabled]="checkedCaduca" [checked]="checkedCaduca" (click)="fechaCaducaChecked()" >
+                            <i></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="venceText">{{ fechaPipe | timeago }} </p>
+                <p class="venceText">{{todoFecha}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="todo__modificar" id="sectionModificarTodo">
+        <textarea name="textContentModificarTodo"   class="todo__content--create" [(ngModel)]="textContentModificarTodo">
+        </textarea>
+    </div>
+    <div class="todos__container" id="todosContainer">
+        <p class="textHayNotas" *ngIf="listaTodosCoinciden < 1">No hay notas en este momento</p>
+       
+        <article class="todo" *ngFor="let todo of listaTodosCoinciden">
+            <div class="todo__acciones">
+                <ul>
+                   
+                    <li [ngStyle]="{'background-color':textDecoration(todo)} " >
+                        <div >
+                            <select name="selectOption" id="{{todo.id}}"   (change)="cambiarEstadoTodo($event)" [ngStyle]="{'color':'white'}" title="Estado" >
+                                <option [disabled]="true" >{{todo.estado}}</option>
+                                <option value="pendiente" *ngIf="todo.estado != 'pendiente'">pendiente</option>
+                                <option value="realizado" *ngIf="todo.estado != 'realizado'">realizado</option>
+                                <option value="cancelado" *ngIf="todo.estado != 'cancelado'">cancelado</option>
+                            </select>
+                        </div>
+                    </li>
+                <div class="container__btns--tresPuntos" *ngIf="todo.id == idSeleccionado">
+                    <input type="button" value="Borrar" id="{{todo.id}}" (click)="borrarTodo($event)">
+                    <input type="button" value="Ver más" id="{{todo.id}}" (click)="accionarSectionModificarTodo(todo.id)">
+                </div>
+                    <li class=" todo__tresPuntos" title="Opciones"><img  src="assets/imgs/icons/trespuntos.svg" alt="Opciones nota" id="{{todo.id}}" (click)="cambiarAccionesTresPuntos($event)" ></li>
+                </ul>
+            </div>
+            <div class="todo__content--container">
+                <p class="todo__content">
+                    <textarea name="texto nota" id="" [disabled]="true" >{{todo.texto}}</textarea>
+                </p>
+            </div>
+            <div class="todo__fecha">
+                <em *ngIf="todo.estado != 'caducado'">{{todo.fechaFinal | timeago}} </em>
+            </div>
+        </article>
+    </div>
+</section>
