@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
+
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
@@ -11,7 +12,7 @@ export class CreateUserComponent implements OnInit{
   ngOnInit(): void {
     let user = this.us.obtenerUser() 
     if(user != false){
-      window.location.href = window.location.href + 'todo'
+      window.location.href = window.location.href + '/todo'
     }
   }
    /* Variables globales */
@@ -21,12 +22,13 @@ export class CreateUserComponent implements OnInit{
   crearUsuario(){
     let userNew ={
       nombre: this.inputNombre,
-      colorFondo:"#023",
+      colorFondo:"#002233",
       burbujas:true
     } 
     this.us.crearUser(userNew)
     setTimeout(() => {
-      window.location.href = window.location.href + 'todo'
-    }, 0);
+      window.location.href = window.location.href
+      
+    }, 300);
   }
 }

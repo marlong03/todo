@@ -39,7 +39,11 @@ export class UserService {
   eliminarUser(){
     this.cookieService.deleteAll()
     setTimeout(() => {
-      window.location.href = window.location.href
-    }, 1000);
+      
+      window.location.href = window.location.href 
+    }, 100);
+   /*  setTimeout(() => {
+      window.location.href = window.location.href.replace('todo','todo')
+    }, 300); */
   }
 }

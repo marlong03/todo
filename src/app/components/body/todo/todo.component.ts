@@ -36,14 +36,11 @@ export class TodoComponent implements OnInit{
       this.textHayAlgo = "No hay notas en este momento"
     }
   
-    console.log(new Date(Date.parse('2023-06-17T08:31:00.000Z')));
-    console.log(new Date(Date.now()));
     let listaCaducados = this.listaBuscar
     listaCaducados.forEach((todo:any)=>{
       if(new Date(Date.parse(todo.fechaFinal)) < new Date(Date.now())){
       
-        console.log("sirves");
-        console.log(todo);
+      
         todo.estado = 'caducado'
         todo.fechaFinal = '0000-00-00T00:00:00.000Z'
         this.ts.actualizarListaTodos(listaCaducados)
@@ -53,7 +50,6 @@ export class TodoComponent implements OnInit{
         
       }
       
-      console.log(listaCaducados);
       
     })
   }
