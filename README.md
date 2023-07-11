@@ -1,1 +1,2 @@
 Todo es una aplicación desarrollada utilizando el framework Angular y aprovechando las cookies para almacenar los datos. Esta aplicación permite a los usuarios crear, leer, actualizar y eliminar notas de manera eficiente. Los datos de las notas se almacenan en las cookies del navegador, lo que proporciona una experiencia persistente para los usuarios incluso después de cerrar y volver a abrir la aplicación, además, también la aplicación tiene la posibilidad de personalización, para dar una interfaz amigable y diferente a cada usuario
+https://marlong03.github.io/todo/
